@@ -1,0 +1,5 @@
+- [x] Update Hilt version in top-level `build.gradle.kts`
+- [x] Update Hilt dependencies in `app/build.gradle.kts`
+- [x] Sync Gradle project
+- [x] Address AGP 9.0 Built-in Kotlin compatibility (added `legacy-kapt`)
+- [x] Fix case-sensitivity in `SupabaseEventApi` filename
