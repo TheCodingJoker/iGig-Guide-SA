@@ -24,7 +24,9 @@ public class EventDto {
     @SerializedName("event_type")
     private String eventType;
 
-    @SerializedName("venues")
+    // PostgREST returns a single object (not an array) for a many-to-one embed,
+    // and the JSON key preserves the quoted table name "Venues".
+    @SerializedName("Venues")
     private VenueDto venue;
 
     @SerializedName("ticket_purchase_link")
@@ -32,6 +34,9 @@ public class EventDto {
 
     @SerializedName("image_url")
     private String imageUrl;
+
+    @SerializedName("ticket_types")
+    private List<TicketTypeDto> ticketTypes;
 
     public EventDto() {
     }
@@ -84,6 +89,9 @@ public class EventDto {
         this.eventType = eventType;
     }
 
+    /**
+     * Returns the single venue associated with this event (many-to-one relation).
+     */
     public VenueDto getVenue() {
         return venue;
     }
@@ -107,9 +115,6 @@ public class EventDto {
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
-
-    @SerializedName("ticket_types")
-    private List<TicketTypeDto> ticketTypes;
 
     public List<TicketTypeDto> getTicketTypes() {
         return ticketTypes;

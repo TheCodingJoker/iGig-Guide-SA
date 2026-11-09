@@ -33,7 +33,8 @@ public class EventMapFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        viewModel = new ViewModelProvider(this).get(ExploreViewModel.class);
+        // Fixed: Use requireParentFragment() to share the ViewModel instance with ExploreFragment and EventListFragment
+        viewModel = new ViewModelProvider(requireParentFragment()).get(ExploreViewModel.class);
 
         SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager()
                 .findFragmentById(R.id.map);
