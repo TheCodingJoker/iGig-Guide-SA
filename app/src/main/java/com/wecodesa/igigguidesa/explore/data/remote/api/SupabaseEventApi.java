@@ -10,9 +10,11 @@ import retrofit2.http.Query;
 
 public interface SupabaseEventApi {
 
-    @GET("events?select=*,venues(*)")
-    Single<List<EventDto>> searchEventsByCity(@Query("venues.city") String cityFilter);
+    // The venues table is capitalized ("Venues") in Supabase; PostgREST is case-sensitive.
+    // ticket_types does not exist in the schema, so it cannot be embedded.
+    @GET("events?select=*,%22Venues%22!inner(*)")
+    Single<List<EventDto>> searchEventsByCity(@Query("\"Venues\".city") String cityFilter);
 
-    @GET("events?select=*,venues(*)")
+    @GET("events?select=*,%22Venues%22(*)")
     Single<List<EventDto>> getEventById(@Query("id") String idFilter);
 }

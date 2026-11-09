@@ -32,6 +32,7 @@ public class ExploreViewModel extends ViewModel {
     private final MutableLiveData<String> errorMessage = new MutableLiveData<>();
 
     private List<Event> allEvents;
+    private EventType selectedType;
 
     @Inject
     public ExploreViewModel(SearchEventsByAreaUseCase searchEventsByAreaUseCase,
@@ -62,7 +63,7 @@ public class ExploreViewModel extends ViewModel {
                         .subscribe(
                                 result -> {
                                     allEvents = result;
-                                    events.setValue(result);
+                                    events.setValue(applyFilter());
                                     isLoading.setValue(false);
                                 },
                                 throwable -> {
@@ -74,17 +75,24 @@ public class ExploreViewModel extends ViewModel {
     }
 
     public void filterByType(EventType eventType) {
-        if (allEvents == null) {
-            return;
+        selectedType = eventType;
+        if (allEvents != null) {
+            events.setValue(applyFilter());
         }
-        List<Event> filtered = filterEventsByTypeUseCase.execute(allEvents, eventType);
-        events.setValue(filtered);
     }
 
     public void clearFilter() {
+        selectedType = null;
         if (allEvents != null) {
-            events.setValue(allEvents);
+            events.setValue(applyFilter());
         }
+    }
+
+    private List<Event> applyFilter() {
+        if (selectedType == null) {
+            return allEvents;
+        }
+        return filterEventsByTypeUseCase.execute(allEvents, selectedType);
     }
 
     @Override

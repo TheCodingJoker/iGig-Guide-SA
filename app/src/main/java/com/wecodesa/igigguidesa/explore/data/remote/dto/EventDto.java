@@ -2,6 +2,8 @@ package com.wecodesa.igigguidesa.explore.data.remote.dto;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 public class EventDto {
 
     @SerializedName("id")
@@ -22,20 +24,19 @@ public class EventDto {
     @SerializedName("event_type")
     private String eventType;
 
-    @SerializedName("venues")
+    // PostgREST returns a single object (not an array) for a many-to-one embed,
+    // and the JSON key preserves the quoted table name "Venues".
+    @SerializedName("Venues")
     private VenueDto venue;
-
-    @SerializedName("ticket_price")
-    private double ticketPrice;
-
-    @SerializedName("is_free")
-    private boolean isFree;
 
     @SerializedName("ticket_purchase_link")
     private String ticketPurchaseLink;
 
     @SerializedName("image_url")
     private String imageUrl;
+
+    @SerializedName("ticket_types")
+    private List<TicketTypeDto> ticketTypes;
 
     public EventDto() {
     }
@@ -88,28 +89,15 @@ public class EventDto {
         this.eventType = eventType;
     }
 
+    /**
+     * Returns the single venue associated with this event (many-to-one relation).
+     */
     public VenueDto getVenue() {
         return venue;
     }
 
     public void setVenue(VenueDto venue) {
         this.venue = venue;
-    }
-
-    public double getTicketPrice() {
-        return ticketPrice;
-    }
-
-    public void setTicketPrice(double ticketPrice) {
-        this.ticketPrice = ticketPrice;
-    }
-
-    public boolean isFree() {
-        return isFree;
-    }
-
-    public void setFree(boolean free) {
-        isFree = free;
     }
 
     public String getTicketPurchaseLink() {
@@ -126,5 +114,13 @@ public class EventDto {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public List<TicketTypeDto> getTicketTypes() {
+        return ticketTypes;
+    }
+
+    public void setTicketTypes(List<TicketTypeDto> ticketTypes) {
+        this.ticketTypes = ticketTypes;
     }
 }

@@ -19,7 +19,8 @@ public class EventRemoteDataSource {
     }
 
     public Single<List<EventDto>> searchEventsByCity(String city) {
-        String filter = "ilike.*" + city + "*";
+        // PostgREST uses % as wildcard for ilike filters, not *
+        String filter = "ilike.%" + city + "%";
         return api.searchEventsByCity(filter);
     }
 
