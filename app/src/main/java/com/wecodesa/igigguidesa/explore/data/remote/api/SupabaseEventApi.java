@@ -10,9 +10,9 @@ import retrofit2.http.Query;
 
 public interface SupabaseEventApi {
 
-    @GET("events?select=*,venues(*)")
+    @GET("events?select=*,venues!inner(*),ticket_types(*)")
     Single<List<EventDto>> searchEventsByCity(@Query("venues.city") String cityFilter);
 
-    @GET("events?select=*,venues(*)")
+    @GET("events?select=*,venues(*),ticket_types(*)")
     Single<List<EventDto>> getEventById(@Query("id") String idFilter);
 }

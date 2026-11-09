@@ -1,5 +1,9 @@
 package com.wecodesa.igigguidesa.explore.data.mapper;
 
+import com.wecodesa.igigguidesa.explore.data.remote.dto.TicketTypeDto;
+import com.wecodesa.igigguidesa.explore.domain.model.TicketType;
+import java.util.ArrayList;
+import java.util.Collections;
 import com.wecodesa.igigguidesa.core.domain.model.Venue;
 import com.wecodesa.igigguidesa.explore.data.remote.dto.EventDto;
 import com.wecodesa.igigguidesa.explore.data.remote.dto.VenueDto;
@@ -9,6 +13,7 @@ import com.wecodesa.igigguidesa.explore.domain.model.EventType;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 import java.util.TimeZone;
 import javax.inject.Inject;
@@ -33,8 +38,7 @@ public class EventMapper {
         event.setEndDateTime(parseDate(dto.getEndDateTime()));
         event.setEventType(mapEventType(dto.getEventType()));
         event.setVenue(mapVenueToDomain(dto.getVenue()));
-        event.setTicketPrice(dto.getTicketPrice());
-        event.setFree(dto.isFree());
+        event.setTicketTypes(mapTicketTypes(dto.getTicketTypes()));
         event.setTicketPurchaseLink(dto.getTicketPurchaseLink());
         event.setImageUrl(dto.getImageUrl());
 
@@ -81,4 +85,29 @@ public class EventMapper {
             return null;
         }
     }
+
+    private List<TicketType> mapTicketTypes(List<TicketTypeDto> dtos) {
+        List<TicketType> result = new ArrayList<>();
+        if (dtos == null) {
+            return result;
+        }
+
+        List<TicketTypeDto> sorted = new ArrayList<>(dtos);
+        Collections.sort(sorted, (a, b) -> Integer.compare(a.getSortOrder(), b.getSortOrder()));
+
+        for (TicketTypeDto dto : sorted) {
+            List<String> perks = new ArrayList<>();
+            if (dto.getPerks() != null) {
+                for (String line : dto.getPerks().split("\\r?\\n")) {
+                    String trimmed = line.trim();
+                    if (!trimmed.isEmpty()) {
+                        perks.add(trimmed);
+                    }
+                }
+            }
+            result.add(new TicketType(dto.getId(), dto.getName(), dto.getPrice(), perks));
+        }
+        return result;
+    }
+
 }

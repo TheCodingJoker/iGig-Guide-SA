@@ -2,7 +2,9 @@ package com.wecodesa.igigguidesa.explore.domain.model;
 
 import com.wecodesa.igigguidesa.core.domain.model.Venue;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Event {
 
@@ -13,8 +15,7 @@ public class Event {
     private Date endDateTime;
     private EventType eventType;
     private Venue venue;
-    private double ticketPrice;
-    private boolean isFree;
+    private List<TicketType> ticketTypes = new ArrayList<>();
     private String ticketPurchaseLink;
     private String imageUrl;
 
@@ -23,7 +24,7 @@ public class Event {
 
     public Event(String id, String title, String description, Date startDateTime,
                  Date endDateTime, EventType eventType, Venue venue,
-                 double ticketPrice, boolean isFree, String ticketPurchaseLink,
+                 List<TicketType> ticketTypes, String ticketPurchaseLink,
                  String imageUrl) {
         this.id = id;
         this.title = title;
@@ -32,10 +33,26 @@ public class Event {
         this.endDateTime = endDateTime;
         this.eventType = eventType;
         this.venue = venue;
-        this.ticketPrice = ticketPrice;
-        this.isFree = isFree;
+        this.ticketTypes = ticketTypes;
         this.ticketPurchaseLink = ticketPurchaseLink;
         this.imageUrl = imageUrl;
+    }
+
+    public double getLowestPrice() {
+        if (ticketTypes == null || ticketTypes.isEmpty()) {
+            return 0;
+        }
+        double lowest = ticketTypes.get(0).getPrice();
+        for (TicketType type : ticketTypes) {
+            if (type.getPrice() < lowest) {
+                lowest = type.getPrice();
+            }
+        }
+        return lowest;
+    }
+
+    public boolean isFree() {
+        return ticketTypes != null && !ticketTypes.isEmpty() && getLowestPrice() == 0;
     }
 
     public String getId() {
@@ -94,20 +111,12 @@ public class Event {
         this.venue = venue;
     }
 
-    public double getTicketPrice() {
-        return ticketPrice;
+    public List<TicketType> getTicketTypes() {
+        return ticketTypes;
     }
 
-    public void setTicketPrice(double ticketPrice) {
-        this.ticketPrice = ticketPrice;
-    }
-
-    public boolean isFree() {
-        return isFree;
-    }
-
-    public void setFree(boolean free) {
-        isFree = free;
+    public void setTicketTypes(List<TicketType> ticketTypes) {
+        this.ticketTypes = ticketTypes;
     }
 
     public String getTicketPurchaseLink() {

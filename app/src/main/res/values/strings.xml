@@ -1,3 +1,34 @@
 <resources>
     <string name="app_name">iGig Guide SA</string>
+    <string name="nav_explore">Explore</string>
+    <string name="nav_tickets">Tickets</string>
+    <string name="nav_profile">Profile</string>
+    <string name="logo_description">iGig Guide logo</string>
+    <string name="search_hint">Search for a city</string>
+    <string name="search_button">Search</string>
+    <string name="type_hotspots">Hotspots</string>
+    <string name="type_clubs">Clubs</string>
+    <string name="type_comedy">Comedy</string>
+    <string name="type_restaurants">Restaurants</string>
+    <string name="type_parks">Parks</string>
+    <string name="type_churches">Churches</string>
+    <string name="view_map">Map</string>
+    <string name="view_list">List</string>
+    <string name="price_from">Tickets: from R%1$s</string>
+    <string name="price_free">Free</string>
+    <string name="empty_events">No events found. Try another city.</string>
+    <string name="event_poster_description">Event poster</string>
+    <string name="back_description">Back</string>
+    <string name="about_event">About event</string>
+    <string name="tickets_title">Tickets</string>
+    <string name="buy">Buy</string>
+    <string name="date_tbc">Date TBA</string>
+    <string name="day_tonight">Tonight</string>
+    <string name="day_today">Today</string>
+    <string name="day_tomorrow">Tomorrow</string>
+    <string name="price_amount">R%1$s</string>
+    <string name="ticket_link_unavailable">Tickets aren\'t available online for this event.</string>
+    <string name="ticket_link_error">Couldn\'t open the ticket link.</string>
+    <string name="placeholder_tickets">Your tickets will appear here</string>
+    <string name="placeholder_profile">Profile coming soon</string>
 </resources>

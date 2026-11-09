@@ -1,13 +1,11 @@
 package com.wecodesa.igigguidesa.explore.domain.model;
 
 public enum EventType {
-    MUSIC,
+    HOTSPOTS,
+    CLUBS,
     COMEDY,
-    SPORT,
-    THEATRE,
-    FESTIVAL,
-    NIGHTLIFE,
-    ARTS_AND_CULTURE,
-    FOOD_AND_DRINK,
+    RESTAURANTS,
+    PARKS,
+    CHURCHES,
     OTHER
 }

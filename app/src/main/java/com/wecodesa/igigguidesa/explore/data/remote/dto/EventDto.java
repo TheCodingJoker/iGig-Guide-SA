@@ -2,6 +2,8 @@ package com.wecodesa.igigguidesa.explore.data.remote.dto;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 public class EventDto {
 
     @SerializedName("id")
@@ -24,12 +26,6 @@ public class EventDto {
 
     @SerializedName("venues")
     private VenueDto venue;
-
-    @SerializedName("ticket_price")
-    private double ticketPrice;
-
-    @SerializedName("is_free")
-    private boolean isFree;
 
     @SerializedName("ticket_purchase_link")
     private String ticketPurchaseLink;
@@ -96,22 +92,6 @@ public class EventDto {
         this.venue = venue;
     }
 
-    public double getTicketPrice() {
-        return ticketPrice;
-    }
-
-    public void setTicketPrice(double ticketPrice) {
-        this.ticketPrice = ticketPrice;
-    }
-
-    public boolean isFree() {
-        return isFree;
-    }
-
-    public void setFree(boolean free) {
-        isFree = free;
-    }
-
     public String getTicketPurchaseLink() {
         return ticketPurchaseLink;
     }
@@ -126,5 +106,16 @@ public class EventDto {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    @SerializedName("ticket_types")
+    private List<TicketTypeDto> ticketTypes;
+
+    public List<TicketTypeDto> getTicketTypes() {
+        return ticketTypes;
+    }
+
+    public void setTicketTypes(List<TicketTypeDto> ticketTypes) {
+        this.ticketTypes = ticketTypes;
     }
 }
