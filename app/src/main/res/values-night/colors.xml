@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Brand Colors -->
+    <color name="brand_orange">#FF7A3D</color>
+    <color name="brand_orange_dark">#FF7138</color>
+    <color name="brand_navy">#3F3A5A</color>
+
+    <!-- Background Colors -->
+    <color name="screen_background">#121212</color>
+    <color name="surface_background">#1E1E1E</color>
+    <color name="list_background">#2A2A2A</color>
+    <color name="card_background">#1E1E1E</color>
+    <color name="bottom_nav_background">#1E1E1E</color>
+
+    <!-- Text Colors -->
+    <color name="text_primary">#FFFFFF</color>
+    <color name="text_secondary">#E0E0E0</color>
+    <color name="text_tertiary">#B0B0B0</color>
+    <color name="text_quaternary">#909090</color>
+    <color name="text_hint">#A0A0A0</color>
+    <color name="text_muted">#808080</color>
+    <color name="text_disabled">#606060</color>
+    <color name="text_on_brand">#FFFFFF</color>
+
+    <!-- Icon Background Colors -->
+    <color name="icon_blue_background">#2A3F4A</color>
+    <color name="icon_red_background">#3A2A2A</color>
+    <color name="icon_orange_background">#3A2E2A</color>
+    <color name="icon_blue_tint">#7A909C</color>
+
+    <!-- Profile Colors -->
+    <color name="profile_avatar_bg">#2A2A3A</color>
+    <color name="profile_image_circle">#3A3A3A</color>
+
+    <!-- Theme Selection Colors -->
+    <color name="theme_selected_bg">#3A2A2A</color>
+    <color name="theme_unselected_bg">#2A2A2A</color>
+    <color name="theme_selected_text">#FFFFFF</color>
+    <color name="theme_unselected_text">#B0B0B0</color>
+
+    <!-- Error Colors -->
+    <color name="error_primary">#FF5252</color>
+    <color name="error_secondary">#FF8A80</color>
+</resources>

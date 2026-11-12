@@ -2,7 +2,8 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.IGigGuideSA" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="android:statusBarColor">@color/surface_background</item>
+        <item name="android:windowBackground">@color/screen_background</item>
     </style>
 
     <style name="Theme.IGigGuideSA" parent="Base.Theme.IGigGuideSA" />
